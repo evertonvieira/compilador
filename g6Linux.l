@@ -24,6 +24,17 @@ RP              ")"
 PTV             ";"
 RET             [\n]
 
+VIR             ","
+ID              "id"
+INT             "int"
+BGN             "begin"
+END             "end"
+IF              "if"
+ELSE            "else"
+DO              "do"
+WHL             "while"
+
+
 %%
 
 {WS}            {
@@ -67,4 +78,34 @@ RET             [\n]
 		}
 {RET}           {
                 return yytext[0];
+                }
+
+
+{VIR}           {
+                return _VIRGULA;
+                }
+
+{ID}            {
+                return _ID;
+                }
+{INT}           {
+                return _INT;
+                }                
+{BGN}           {
+                return _BEGIN;
+                }
+{END}           {
+                return _END;
+                }
+{IF}            {
+                return _IF;
+                }
+{ELSE}          {
+                return _ELSE;
+                }
+{DO}            {
+                return _DO;
+                }
+{WHL}           {
+                return _WHILE;
                 }
