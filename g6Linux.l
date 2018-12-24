@@ -23,7 +23,6 @@ LP              "("
 RP              ")"
 PTV             ";"
 RET             [\n]
-
 VIR             ","
 ID              "id"
 INT             "int"
@@ -33,12 +32,10 @@ IF              "if"
 ELSE            "else"
 DO              "do"
 WHL             "while"
-
-
 %%
 
 {WS}            {
-               /* eat up white space */
+                /* eat up white space */
                 }
 {PLUS}          {
                 return _MAIS;
@@ -64,27 +61,12 @@ WHL             "while"
 {PTV}		{
 		return _PTVIRG;
 		}
-
 {PRINT}         {
 		return _PRINT;
 		}
-{NUMBER}        {
-		strcpy(yylval.t.symbol, yytext);
-                return _N;
-                }
-{IDENT}         {
-		strcpy(yylval.t.symbol, yytext);
-		return _V;
-		}
-{RET}           {
-                return yytext[0];
-                }
-
-
 {VIR}           {
-                return _VIRGULA;
-                }
-
+		return _VIRGULA;
+		}
 {ID}            {
                 return _ID;
                 }
@@ -108,4 +90,15 @@ WHL             "while"
                 }
 {WHL}           {
                 return _WHILE;
+                }                                                
+{NUMBER}        {
+		strcpy(yylval.t.symbol, yytext);
+                return _N;
+                }
+{IDENT}         {
+		strcpy(yylval.t.symbol, yytext);
+		return _V;
+		}
+{RET}           {
+                return yytext[0];
                 }
