@@ -43,8 +43,7 @@ WHL         "while"
 {RP}        { return _FECHAPAR; }
 {PTV}		{ return _PTVIRG; }
 {PRINT}     { return _PRINT; }
-{VIR}       { return _VIRGULA; }
-{INT}       { return _INT; }                
+{VIR}       { return _VIRGULA; }             
 {BGN}       { return _BEGIN; }
 {END}       { return _END; }
 {IF}        { return _IF; }
