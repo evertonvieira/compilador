@@ -9,47 +9,94 @@ YYSTYPE yylval;
 %}
 
 ALFA 		[A-Za-z_]
-PLUS        [\+]
-MINUS       [\-]
-TIMES       [\*]
-DIVIDE      [/]
-DIGIT       [0-9]
-NUMBER      ({DIGIT}+)
-PRINT       "print"
+PLUS            [\+]
+MINUS           [\-]
+TIMES           [\*]
+DIVIDE          [/]
+DIGIT           [0-9]
+NUMBER          ({DIGIT}+)
+PRINT           "print"
+
+IF              "if"
+ELSE            "else"
+TINT            "int"
+WHILE           "while"
+DO              "do"
+BEGIN           "begin"
+END             "end"
+
+
+
+
 IDENT		{ALFA}({ALFA}|{DIGIT})*
-WS          [ \t]*
+WS              [ \t]*
 ATRIB		"="
-LP          "("
-RP          ")"
-PTV         ";"
-RET         [\n]
-VIR         ","
-INT         "int"
-BGN         "begin"
-END         "end"
-IF          "if"
-ELSE        "else"
-DO			"do"
-WHL         "while"
+LP              "("
+RP              ")"
+PTV             ";"
+VIRGULA         ","
+RET             [\n]
+
 %%
 
-{WS}        { /* eat up white space */ }
-{PLUS}      { return _MAIS; }
-{TIMES}     { return _MULT; }
-{MINUS}     { return _MENOS; }
-{DIVIDE}    { return _DIVID; }
-{ATRIB}		{ return _ATRIB; }
-{LP}        { return _ABREPAR; }
-{RP}        { return _FECHAPAR; }
-{PTV}		{ return _PTVIRG; }
-{PRINT}     { return _PRINT; }
-{VIR}       { return _VIRGULA; }             
-{BGN}       { return _BEGIN; }
-{END}       { return _END; }
-{IF}        { return _IF; }
-{ELSE}      { return _ELSE; }
-{DO}        { return _DO; }
-{WHL}       { return _WHILE; }                                                
-{NUMBER}    { strcpy(yylval.t.symbol, yytext); return _N; }
-{IDENT}     { strcpy(yylval.t.symbol, yytext); return _V; }
-{RET}		{ return yytext[0]; }
+{WS}            {
+                /* eat up white space */
+                }
+{PLUS}          {
+                return _MAIS;
+                }
+{TIMES}         {
+                return _MULT;
+                }
+{MINUS}         {
+                return _MENOS;
+                }
+{DIVIDE}        {
+                return _DIVID;
+                }
+{ATRIB}		{
+		return _ATRIB;
+		}
+{BEGIN} {return _BEGIN;}
+{END} {return _END;}
+{LP}            {
+                return _ABREPAR;
+                }
+{RP}            {
+                return _FECHAPAR;
+                }
+{VIRGULA}           {
+                return _VIRGULA;
+                }
+{PTV}		{
+		return _PTVIRG;
+		}
+{TINT}		{
+		return _TINT;
+		}
+{NUMBER}        {
+                strcpy(yylval.t.symbol, yytext);
+                return _N;
+                }
+{PRINT}         {
+                return _PRINT;
+                }
+{IF}		{
+		return _IF;
+		}
+{ELSE}          {
+                return _ELSE;
+                }
+{WHILE}         {
+                return _WHILE;
+                }
+{DO}            {
+                return _DO;
+                }
+{IDENT}         {
+		strcpy(yylval.t.symbol, yytext);
+		return _V;
+		}
+{RET}           {
+                return yytext[0];
+                }
