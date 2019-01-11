@@ -1,0 +1,2 @@
+int a,b,c; begin if 3+3 begin b=4 end end
+int a,b,c; begin if 3+3 begin print (a) end else begin a=4 end end
